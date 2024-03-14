@@ -59,6 +59,13 @@ public class StudentController {
 			if(s.getPhoneNo() != 0){
 				s1.setPhoneNo(s.getPhoneNo());
 			}
+	
+// This will save null values for missing parameters
+			
+//			s1.setCity(s.getCity());
+//			s1.setName(s.getName());
+//			s1.setPhoneNo(s.getPhoneNo());
+			
 			studentRepo.save(s1);
 			return Optional.ofNullable(s1);
 		}else {
