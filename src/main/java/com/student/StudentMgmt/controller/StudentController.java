@@ -50,9 +50,15 @@ public class StudentController {
 		Optional<Students> ss = studentRepo.findById(rollno);
 		if(ss.isPresent()) {
 			Students s1 = ss.get();
-			s1.setCity(s.getCity());
-			s1.setName(s.getName());
-			s1.setPhoneNo(s.getPhoneNo());
+			if(s.getCity() != null){
+				s1.setCity(s.getCity());
+			}
+			if(s.getName() != null){
+				s1.setName(s.getName());
+			}
+			if(s.getPhoneNo() != 0){
+				s1.setPhoneNo(s.getPhoneNo());
+			}
 			studentRepo.save(s1);
 			return Optional.ofNullable(s1);
 		}else {
