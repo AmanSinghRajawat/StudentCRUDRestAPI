@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.student.StudentMgmt.entity.Students;
@@ -44,7 +45,24 @@ public class StudentController {
 		return studentRepo.findById(rollno);
 	}
 	
-	
+
+	// below Method will return Single Student.
+
+	// @GetMapping("/findStudentByName/name")
+	// public Students findStudentByName(@RequestParam String name) {
+	// Students student = studentRepo.findStudentByName(name);
+	// return student;
+	// }
+
+	// below Method will return List Of Students.
+
+	@GetMapping("/findStudentByName/name")
+	public List<Students> findStudentByName(@RequestParam String name) {
+		List<Students> student = studentRepo.findStudentByName(name);
+		return student;
+	}
+
+
 	@PutMapping("/updateStudent/{rollno}")
 	public Optional<Students> updateStudent(@PathVariable long rollno, @RequestBody Students s) {
 		Optional<Students> ss = studentRepo.findById(rollno);
